@@ -1,0 +1,46 @@
+.header{
+    display: flex;
+    justify-content: space-between ;
+    border : 2px dotted black ;
+}
+
+.logo{
+    width: 120px;
+}
+
+.nav-items ul {
+   display: flex;
+   list-style-type: none;
+}
+
+.nav-items ul li{
+    padding: 10px;
+    margin: 10px;
+    
+}
+
+.search{
+    margin: 20;
+}
+.searchInput{
+    padding-right:84%;
+}
+
+.res-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px;
+}
+
+.res-card{
+    width: 240px;
+   
+    border: 1px solid black;
+    padding: 5px;
+}
+
+
+.res-logo{
+    width: 240px  ;
+    height: 200px;
+}

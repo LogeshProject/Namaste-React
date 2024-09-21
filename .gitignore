@@ -1,0 +1,4 @@
+# Ignore Node.js modules
+node_modules
+dist
+.parcel-cache
