@@ -44,3 +44,9 @@
     width: 240px  ;
     height: 200px;
 }
+
+.filter-btn-top, .filter-btn-veg , .filter-btn-non-veg{
+    cursor: pointer;
+    padding: 3px;
+    margin-left: 20px;
+}
