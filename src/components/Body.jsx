@@ -1,31 +1,5 @@
-import ReactDOM from 'react-dom'
 
-
-
-
-const Heading = () => {
-    return (
-        <>
-
-            <div className='header'>
-                <div className='logo-container'>
-                    <img className='logo' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdaMYtVi9_tfNcpsbGGseU6ehYgV9UeU3h7A&s'></img>
-                </div>
-                <div className='nav-items'>
-                    <ul>
-                        <li>Home</li>
-                        <li>About</li>
-                        <li>Food</li>
-                        <li>Offers</li>
-                        <li>Contact</li>
-                    </ul>
-                </div>
-            </div>
-
-
-        </>
-    );
-};
+import Restaurant from "./Restaurant";
 
 
 const resList = [
@@ -2147,50 +2121,6 @@ const resList = [
     }
 ]
 
-function renderStars(avgRating) {
-    const fullStars = Math.floor(avgRating); // Number of full stars
-    const halfStar = avgRating % 1 >= 0.5; // Determine if there's a half star
-    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0); // Number of empty stars
-
-    return (
-        <>
-            {'★'.repeat(fullStars)}
-            {halfStar ? '½' : ''}
-            {'☆'.repeat(emptyStars)}
-        </>
-    );
-}
-
-
-
-const Restaurant = (props) => {
-
-    let { resData } = props;
-
-    let { cloudinaryImageId, name, cuisines, avgRating, costForTwo } = resData?.info;
-
-    return (
-        <>
-
-
-            <div className='res-card' style={{ backgroundColor: '#f0f0f0', margin: '3%' }}>
-                <img className='res-logo' src={'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/' + cloudinaryImageId} ></img>
-                <h4>{name}</h4>
-                <p>{cuisines.join(" , ")}</p>
-                <div style={{ color: 'red' }}>
-                    <h4 style={{ display: 'inline', marginLeft: '1px', color: 'red' }}>{costForTwo}</h4>
-                    <h5 style={{ display: 'inline', color: 'blue', padding : '10px' }}>Ratings : {renderStars(avgRating)}</h5>
-
-                </div>
-
-            </div>
-
-
-        </>
-    )
-
-}
-
 const Body = () => {
     return (
         <>
@@ -2201,7 +2131,7 @@ const Body = () => {
                 </div>
                 <div className='res-container' style={{ padding: "2%" }}>
                    {
-                    resList.map(restaurant => <Restaurant resData={restaurant} />)
+                    resList.map(restaurant => <Restaurant key={restaurant.info.id} resData={restaurant} />)
                    }
 
                 </div>
@@ -2211,29 +2141,4 @@ const Body = () => {
     )
 }
 
-
-
-const AppLayout = () => {
-
-    return (
-        <>
-
-            <div className='app'>
-                <Heading />
-                <Body />
-
-            </div>
-
-        </>
-    )
-}
-
-
-
-
-
-
-
-let root = ReactDOM.createRoot(document.getElementById('root'));
-
-root.render(<AppLayout />)
+export default Body ;
