@@ -2,6 +2,8 @@ import Restaurant from "./Restaurant";
 import resList from "../utils/mockData";
 import { useEffect, useState } from "react";
 
+import '../styles/body.css'
+
 const Body = () => {
   let [restaurantList, setRestaurantList] = useState([]);
   let [filterRestaurantList, setFilterRestaurantList] = useState([]);
@@ -85,64 +87,66 @@ const Body = () => {
   // }
 
   return restaurantList.length === 0 ? (
-    <h1 style={{display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      height: "80vh",
-      margin: 0}}>Loading....</h1>
+    <h1
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "80vh",
+        margin: 0,
+      }}
+    >
+      Loading....
+    </h1>
   ) : (
     <>
       <div className="body">
+        {/* Search Bar */}
         <div className="search">
           <input
             className="searchInput"
             type="text"
             value={searchText}
-            onChange={(e) => {
-              setSearchText(e.target.value);
-            }}
-          ></input>
+            placeholder="Search restaurants..."
+            onChange={(e) => setSearchText(e.target.value)}
+          />
           <button
+            className="search-btn"
             onClick={() => {
-              console.log(searchText);
-              const filtername = restaurantList.filter(
-                (res)=> res.info.name.toLowerCase().includes(searchText.toLowerCase()) 
+              const filteredByName = restaurantList.filter((res) =>
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
-
-              setFilterRestaurantList(filtername);
-
+              setFilterRestaurantList(filteredByName);
             }}
-
-
           >
-            search
+            Search
           </button>
         </div>
+  
+        {/* Filter Section */}
         <div className="filter">
-          <div className="filter-top" style={{ display: "inline" }}>
-            <button
-              className="filter-btn-top"
-              onClick={() => {
-                let filterList = restaurantList.filter(
-                  (res) => res.info.avgRating > 4.5
-                );
-
-             
-                console.log(filterList);
-                setFilterRestaurantList(filterList);
-              }}
-            >
-              Top Rated
-            </button>
-          </div>
-          <div className="filter-veg" style={{ display: "inline" }}>
-            <button className="filter-btn-veg">Pure Veg Foods</button>
-          </div>
-          <div className="filter-non-veg" style={{ display: "inline" }}>
-            <button className="filter-btn-non-veg">Non-veg Foods</button>
-          </div>
+          {/* Top Rated Button */}
+          <button
+            className="filter-btn filter-btn-top"
+            onClick={() => {
+              const topRatedRestaurants = restaurantList.filter(
+                (res) => res.info.avgRating > 4.5
+              );
+              setFilterRestaurantList(topRatedRestaurants);
+            }}
+          >
+            Top Rated
+          </button>
+  
+          {/* Pure Veg Button */}
+          <button className="filter-btn filter-btn-veg">Pure Veg Foods</button>
+  
+          {/* Non-Veg Button */}
+          <button className="filter-btn filter-btn-non-veg">Non-Veg Foods</button>
         </div>
-        <div className="res-container" style={{ padding: "2%" }}>
+  
+        {/* Restaurant List */}
+        <div className="res-container" style={{ padding: "2%" , margin : "5%" }}>
           {filterRestaurantList.map((restaurant) => (
             <Restaurant key={restaurant.info.id} resData={restaurant} />
           ))}
@@ -150,6 +154,7 @@ const Body = () => {
       </div>
     </>
   );
+  
 };
 
 export default Body;

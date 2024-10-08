@@ -1,32 +1,29 @@
 import { CDN_URL } from "../utils/constants";
 
+import '../styles/restaurant.css'
+
 const Restaurant = (props) => {
-
-    let { resData } = props;
-
-    let { cloudinaryImageId, name, cuisines, avgRating, costForTwo } = resData?.info;
-
+    const { resData } = props;
+    const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } = resData?.info;
+  
     return (
-        <>
-
-
-            <div className='res-card' style={{ backgroundColor: '#f0f0f0', margin: '3%' }}>
-                <img className='res-logo' src={CDN_URL + cloudinaryImageId} ></img>
-                <h4>{name}</h4>
-                <p>{cuisines.join(" , ")}</p>
-                <div style={{ color: 'red' }}>
-                    <h4 style={{ display: 'inline', marginLeft: '1px', color: 'red' }}>{costForTwo}</h4>
-                    <h5 style={{ display: 'inline', color: 'blue', padding : '10px' }}>Ratings : {renderStars(avgRating)}</h5>
-
-                </div>
-
-            </div>
-
-
-        </>
-    )
-
-}
+      <div className='res-card'>
+        <img className='res-logo' src={CDN_URL + cloudinaryImageId} alt={`${name} logo`} />
+        <h4>{name}</h4>
+        <p>{cuisines.join(', ')}</p>
+        <div className='res-details'>
+          <h4 className='cost-for-two'>{costForTwo}</h4>
+         
+        </div>
+        <div>
+        <h5 className='avg-rating'>
+            Ratings: {renderStars(avgRating)}
+          </h5>
+        </div>
+      </div>
+    );
+  };
+  
 
 
 function renderStars(avgRating) {

@@ -4,7 +4,14 @@ import Heading from './components/Header.jsx'
 
 import Body from './components/Body.jsx'
 
+import About from './components/About.jsx'
 
+import Error from './components/Error.jsx'
+
+import RestaurantDetails from './components/RestaurantDetails.jsx'
+
+
+import { createBrowserRouter , RouterProvider , Outlet } from 'react-router-dom'
 
 const AppLayout = () => {
 
@@ -13,7 +20,7 @@ const AppLayout = () => {
 
             <div className='app'>
                 <Heading />
-                <Body />
+                <Outlet />
 
             </div>
 
@@ -22,7 +29,34 @@ const AppLayout = () => {
 }
 
 
+const appRouter = createBrowserRouter([
+    {
+        path:'/',
+        element: <AppLayout/>,
+        children : [
+            {
+                path:'/',
+                element: <Body/>,
+               
+            },
+            {
+                path:'/about',
+                element: <About/>,
+               
+            },
+            {
+                path:'/restaurant/:id',
+                element: <RestaurantDetails/>,
+               
+            }
+        ],
+        errorElement : <Error/>
+    },
+    
+])
+
+
 
 let root = ReactDOM.createRoot(document.getElementById('root'));
 
-root.render(<AppLayout />)
+root.render(<RouterProvider router={appRouter} />)

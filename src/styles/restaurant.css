@@ -1,0 +1,70 @@
+/* Restaurant Card Container */
+.res-card {
+    background-color: #f0f0f0;
+    margin: 3%;
+    padding: 30px; /* Increased padding */
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    width: 300px; /* Increased width */
+    height: auto; /* Make height adjust based on content */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+  }
+  
+  .res-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Restaurant Logo */
+  .res-logo {
+    width: 80%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding-right: 5%;
+  }
+  
+  /* Restaurant Details */
+  .res-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  /* Cost and Ratings */
+  .cost-for-two {
+    font-size: 1.2rem;
+    color: red;
+    margin: 0;
+  }
+  
+  .avg-rating {
+    font-size: 1rem;
+    color: blue;
+    padding-left: 10px;
+    padding: 1%;
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    .res-card {
+      margin: 2%;
+      padding: 15px;
+    }
+  
+    .res-logo {
+      height: 120px;
+    }
+  
+    .cost-for-two {
+      font-size: 1rem;
+    }
+  
+    .avg-rating {
+      font-size: 0.9rem;
+    }
+  }
+  
