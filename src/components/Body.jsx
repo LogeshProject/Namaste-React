@@ -2,6 +2,8 @@ import Restaurant from "./Restaurant";
 import resList from "../utils/mockData";
 import { useEffect, useState } from "react";
 
+import useOnlineStatus from "../utils/useOnlineStatus";
+
 import '../styles/body.css'
 
 const Body = () => {
@@ -85,6 +87,20 @@ const Body = () => {
   //     <h1>Loading....</h1>
   //   )
   // }
+
+  const userOnlineStatus = useOnlineStatus()
+
+  if(userOnlineStatus === false ) return <h1
+  
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "80vh",
+    margin: 0,
+  }}
+  
+  >Looks like you are offline !!! please check your internet connectivity</h1>
 
   return restaurantList.length === 0 ? (
     <h1
