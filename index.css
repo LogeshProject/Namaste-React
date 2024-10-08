@@ -50,3 +50,9 @@
     padding: 3px;
     margin-left: 20px;
 }
+
+.login{
+    cursor: pointer;
+   
+    margin-right: 10px;
+}
